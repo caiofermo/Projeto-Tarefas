@@ -1,0 +1,200 @@
+/* Reset e configurações globais melhoradas */
+:root {
+  --primary-color: #3498db;
+  --primary-dark: #2980b9;
+  --success-color: #27ae60;
+  --success-dark: #1e8449;
+  --text-color: #2c3e50;
+  --light-gray: #f2f6fc;
+  --border-color: #e0e0e0;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #f5f7fa 0%, #e4e8eb 100%);
+  color: var(--text-color);
+  padding: 2rem;
+  min-height: 100vh;
+}
+
+/* Container principal */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  background: white;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+/* Cabeçalho personalizado */
+h1 {
+  margin-bottom: 1.5rem;
+  color: var(--text-color);
+  font-size: 2.2rem;
+  text-align: center;
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+h1::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 3px;
+  background: var(--primary-color);
+}
+
+/* Tabela aprimorada */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  background: white;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+thead th {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 1rem;
+  text-align: left;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+}
+
+tbody td {
+  padding: 1rem;
+  border-bottom: 1px solid var(--border-color);
+  transition: background-color 0.2s ease;
+}
+
+/* Efeitos de hover e linhas alternadas */
+tbody tr:not(:last-child) {
+  border-bottom: 1px solid var(--border-color);
+}
+
+tbody tr:nth-child(even) {
+  background-color: var(--light-gray);
+}
+
+tbody tr:hover {
+  background-color: rgba(52, 152, 219, 0.05);
+}
+
+/* Status das tarefas */
+td:nth-child(3) {
+  font-weight: 600;
+}
+
+td:nth-child(3):contains("Concluido") {
+  color: var(--success-color);
+}
+
+td:nth-child(3):contains("Pendente") {
+  color: #e74c3c;
+}
+
+/* Botões de ação */
+td a {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+}
+
+td a[href*="editar"] {
+  background-color: #f39c12;
+  color: white;
+}
+
+td a[href*="editar"]:hover {
+  background-color: #d35400;
+}
+
+td a[href*="remover"] {
+  background-color: #e74c3c;
+  color: white;
+}
+
+td a[href*="remover"]:hover {
+  background-color: #c0392b;
+}
+
+/* Botão de adicionar */
+a {
+  color: #2980b9;          /* Cor azulzinha */
+  text-decoration: none;   /* Remove sublinhado */
+  font-weight: 600;        /* Negrito leve */
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: #1f6391;          /* Azul mais escuro ao passar mouse */
+  text-decoration: underline; /* Sublinhado no hover */
+}
+
+
+/* Responsividade */
+@media (max-width: 768px) {
+  body {
+    padding: 1rem;
+  }
+  
+  .container {
+    padding: 1rem;
+  }
+  
+  table {
+    font-size: 0.9rem;
+  }
+  
+  thead {
+    display: none;
+  }
+  
+  tbody tr {
+    display: block;
+    margin-bottom: 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+  }
+  
+  tbody td {
+    display: block;
+    text-align: right;
+    padding-left: 50%;
+    position: relative;
+  }
+  
+  tbody td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 1rem;
+    width: calc(50% - 1rem);
+    text-align: left;
+    font-weight: 600;
+  }
+  
+  td a {
+    display: block;
+    text-align: center;
+    margin: 0.5rem 0;
+  }
+}
